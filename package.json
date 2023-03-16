@@ -1,0 +1,26 @@
+{
+  "name": "node-rpsls-express",
+  "version": "1.0.0",
+  "description": "node-rpsls with express",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js --port=5555"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2023-spring/a04-hannesbrinklert.git"
+  },
+  "author": "hannesbrinklert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comp426-2023-spring/a04-hannesbrinklert/issues"
+  },
+  "homepage": "https://github.com/comp426-2023-spring/a04-hannesbrinklert#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "minimist": "^1.2.8",
+    "node-rpsls": "file:lib/a03-hannesbrinklert"
+  },
+  "type": "module"
+}
