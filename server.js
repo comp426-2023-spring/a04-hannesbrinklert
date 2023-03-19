@@ -15,7 +15,7 @@ const port = args.port || 5000;
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/app/', (req, res) => {
     res.status(200);
@@ -34,17 +34,32 @@ app.get('/app/rpsls', (req, res) => {
     res.send(rpsls());
 });
 
+app.get('/app/rps/play', (req, res) => {
+    res.send(rps(req.body.shot));
+});
+
+app.get('/app/rpsls/play', (req, res) => {
+    res.send(rpsls(req.body.shot))
+});
+
+
 app.post('/app/rps/play', (req, res) => {
-    res.send(rps(req.body.shot))
+    res.send(rps(req.body.shot));
 });
 
 app.post('/app/rpsls/play', (req, res) => {
     res.send(rpsls(req.body.shot))
 });
 
-app.get('/app/rps/play', (req, res) => {
-    res.send(req.body);
+
+app.get('/app/rps/play/:shot(rock|paper|scissors)', (req, res) => {
+    res.send(rps(req.params.shot));
 });
+
+app.get('/app/rpsls/play/:shot(rock|paper|scissors|lizard|spock)', (req, res) => {
+    res.send(rpsls(req.params.shot));
+});
+
 
 app.get('*', (req, res) => {
     res.status(404);
