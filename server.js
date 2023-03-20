@@ -15,40 +15,40 @@ const port = args.port || 5000;
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/app/', (req, res) => {
     res.status(200);
     res.send("200 OK")
 });
 
-app.get('/app/rpsls', (req, res) => {
+app.get('/app/rpsls/', (req, res) => {
     res.send(rpsls());
 });
 
-app.get('/app/rps', (req, res) => {
+app.get('/app/rps/', (req, res) => {
     res.send(rps());
 });
 
-app.get('/app/rpsls', (req, res) => {
+app.get('/app/rpsls/', (req, res) => {
     res.send(rpsls());
 });
 
-app.get('/app/rps/play', (req, res) => {
+app.get('/app/rps/play/', (req, res) => {
+    res.send(rps(req.query.shot));
+});
+
+app.get('/app/rpsls/play/', (req, res) => {
+    res.send(rpsls(req.query.shot))
+});
+
+
+app.post('/app/rps/play/', (req, res) => {
     res.send(rps(req.body.shot));
 });
 
-app.get('/app/rpsls/play', (req, res) => {
-    res.send(rpsls(req.body.shot))
-});
-
-
-app.post('/app/rps/play', (req, res) => {
-    res.send(rps(req.body.shot));
-});
-
-app.post('/app/rpsls/play', (req, res) => {
-    res.send(rpsls(req.body.shot))
+app.post('/app/rpsls/play/', (req, res) => {
+    res.send(rpsls(req.body.shot));
 });
 
 
